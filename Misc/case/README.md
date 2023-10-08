@@ -1,4 +1,4 @@
-# Case (Encode, Classic-cipher)
+# case (Encode, Classic-cipher)
 
 # Description
 Mia just encrypted something very important, but she forgot that CASE is critical.
