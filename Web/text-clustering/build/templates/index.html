@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文本聚类器</title>
+    <!-- 使用中国的Bootstrap CDN -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.6.0/css/bootstrap.min.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">文本聚类器</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#train">上传训练样本</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#classify">分类文本</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="container mt-5">
+        <div class="row">
+            <!-- 介绍信息 -->
+            <div class="col" id="intro">
+                <h1>欢迎使用文本聚类器</h1>
+                <p>请选择导航栏中的功能以继续。</p>
+            </div>
+            
+            <!-- 上传训练样本页面 -->
+            <div class="col" id="train" style="display: none;">
+                <h1>上传训练样本</h1>
+                <h4 class="mb-3">模型名称：</h4>
+                <input type="text" id="modelName" class="form-control mb-3" placeholder="输入模型名称">
+                <button class="btn btn-primary mb-3" id="addSample">添加上传点</button>
+                <button class="btn btn-danger mb-3" id="clearSamples">清除所有上传点</button>
+                <div id="sampleList">
+                    <!-- 这里将显示用户手动添加的上传点 -->
+                </div>
+                <button class="btn btn-primary" id="trainButton">开始训练</button>
+            </div>
+            
+            <!-- 上传待分类文本页面 -->
+            <div class="col" id="classify" style="display: none;">
+                <h1>上传待分类文本</h1>
+                <select class="form-control mb-3" id="modelSelect">
+                    <option value="" disabled selected>选择模型</option>
+                    <!-- 这里将显示所有模型的选项 -->
+                </select>
+                <textarea id="classifyText" class="form-control mb-3" rows="5" placeholder="输入待分类文本"></textarea>
+                <button class="btn btn-primary" id="classifyButton">分类文本</button>
+            </div>
+        </div>
+        
+        <!-- 分类结果 -->
+        <div class="row mt-5">
+            <div class="col" id="classificationResult" style="display: none;">
+                <h2>分类结果</h2>
+                <div id="resultContent"></div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 使用中国的Bootstrap JS CDN -->
+    <script src="https://cdn.bootcss.com/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/4.6.0/js/bootstrap.min.js"></script>
+    <script src="static/script.js"></script>
+</body>
+</html>
