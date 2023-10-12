@@ -27,7 +27,8 @@ guard_menu = br'''
 2.Go away
 '''
 
-FLAG = b'NOCTF{Y0u_4re_7h3_MaSt3r_0f_7h3_REc0n_c@nGra7u1at1on3}'
+with open("flag", "rb") as f:
+    FLAG = f.read()
 
 
 class Task(socketserver.BaseRequestHandler):
@@ -85,8 +86,8 @@ class Task(socketserver.BaseRequestHandler):
             return False
 
     def handle(self):
-        signal.alarm(120)
-        time.sleep(60)
+        # signal.alarm(120)
+        # time.sleep(60)
         if not self.proof_of_work():
             return
         self.send(BANNER, newline=False)
@@ -96,7 +97,7 @@ class Task(socketserver.BaseRequestHandler):
         if option == b'1':
             try:
                 self.send(b"Please give me Latitude and longitude that I can directly to search in the google map: ")
-                location = self.register()
+                location = self.register().strip()
 
                 if self.check(location):
                     self.send(b"Unbelievable! How did you get it!")
@@ -111,17 +112,12 @@ class Task(socketserver.BaseRequestHandler):
         self.request.close()
 
 
-class ThreadedServer(socketserver.ThreadingMixIn, socketserver.TCPServer):
-    pass
-
-
 class ForkedServer(socketserver.ForkingMixIn, socketserver.TCPServer):
     pass
 
 
 if __name__ == "__main__":
-    HOST, PORT = '0.0.0.0', 11113
-    print("HOST:POST " + HOST + ":" + str(PORT))
-    with socketserver.TCPServer((HOST, PORT), Task) as server:
-        server.allow_reuse_address = True
-        server.serve_forever()
+    HOST, PORT = '0.0.0.0', 1338
+    server = ForkedServer((HOST, PORT), Task)
+    server.allow_reuse_address = True
+    server.serve_forever()
