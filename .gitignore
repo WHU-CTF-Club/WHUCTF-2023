@@ -1,3 +1,5 @@
 .vsc
 .idea
 .gitignore
+
+.DS_Store
