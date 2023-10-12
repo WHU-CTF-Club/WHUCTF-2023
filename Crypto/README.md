@@ -1,12 +1,12 @@
-# JSON-Web RSA签名求n(Signature)
+# imitate (Signature)
 
 
 # 随机数(STREAM-rng)
 
-# ECC(Asymmetric-)
+# ECC (Asymmetric-)
 
 
-# 魔改AES(BLOC-)
+# miaES (BLOCK)
 
 
 # (-Lattice)

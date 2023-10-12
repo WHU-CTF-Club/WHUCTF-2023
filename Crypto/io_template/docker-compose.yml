@@ -1,0 +1,11 @@
+version: "2"
+
+services:
+  python:
+    build: .
+    image: newcomerplz/io
+    restart: always
+    ports:
+      - "127.0.0.1:1337:10002"
+    environment:
+      - GZCTF_FLAG=flag{kfccrazythursdayvme50}
