@@ -4,7 +4,7 @@
 #include "gamemd.hpp"
 #include "Memory.hpp"
 
-bool __stdcall DllMain(void*, unsigned int, void*)
+bool __stdcall DllMain(void *, unsigned int, void *)
 {
     return true;
 }

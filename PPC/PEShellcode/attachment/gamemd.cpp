@@ -1,6 +1,6 @@
 #include "gamemd.hpp"
 
-__declspec(naked) int __stdcall MessageBoxA(void* hWnd, const char* lpText, const char* lpCaption, unsigned int uType)
+__declspec(naked) int __stdcall MessageBoxA(void *hWnd, const char *lpText, const char *lpCaption, unsigned int uType)
 {
     __asm
     {
@@ -17,7 +17,7 @@ __declspec(naked) int __fastcall Set_Required_CD(int cd)
     }
 }
 
-__declspec(naked) MixFileClass::MixFileClass(const char* pFileName, const PKey& key)
+__declspec(naked) MixFileClass::MixFileClass(const char *pFileName, const PKey &key)
 {
     __asm
     {
@@ -35,7 +35,7 @@ __declspec(naked) MixFileClass::~MixFileClass()
     }
 }
 
-__declspec(naked) RAMFileClass::RAMFileClass(const void* data, int length)
+__declspec(naked) RAMFileClass::RAMFileClass(const void *data, int length)
 {
     __asm
     {
@@ -62,7 +62,7 @@ __declspec(naked) CCFileClass::CCFileClass()
     }
 }
 
-__declspec(naked) CCFileClass::CCFileClass(const char* pFileName)
+__declspec(naked) CCFileClass::CCFileClass(const char *pFileName)
 {
     __asm
     {
@@ -80,7 +80,7 @@ __declspec(naked) CCFileClass::~CCFileClass()
     }
 }
 
-__declspec(naked) unsigned int CRCEngine::operator()(void* buffer, int length)
+__declspec(naked) unsigned int CRCEngine::operator()(void *buffer, int length)
 {
     __asm
     {
@@ -107,7 +107,7 @@ __declspec(naked) INIClass::~INIClass()
     }
 }
 
-__declspec(naked) int INIClass::Load(RAMFileClass* file, bool flag)
+__declspec(naked) int INIClass::Load(RAMFileClass *file, bool flag)
 {
     __asm
     {
