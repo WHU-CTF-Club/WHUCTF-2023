@@ -27,8 +27,20 @@ void client_ragequit(int code);
 void client_sync_global_send();
 void client_sync_global_recv();
 
-int main()
+int main(int argc, const char** argv)
 {
+    if (argc != 3)
+    {
+        printf(
+            "Usage: %s <ipaddr> <port>\n"
+            "e.g. %s 127.0.0.1 10001\n",
+            argv[0], argv[0]
+            );
+        return 1;
+    }
+    const char* server_ip = argv[1];
+    short port = atoi(argv[2]);
+
     client_init();
     if (elements == NULL)
         client_ragequit(1);
@@ -40,10 +52,8 @@ int main()
 
     memset(&addr, 0, sizeof(addr));
     addr.sin_family = AF_INET;
-    addr.sin_port = htons(11451);
-    
-    // const char* server_ip = "125.220.147.49";
-    const char* server_ip = "127.0.0.1";
+    addr.sin_port = htons(port);
+
     if (inet_pton(AF_INET, server_ip, &addr.sin_addr) <= 0)
         client_ragequit(1);
 
@@ -64,7 +74,7 @@ int main()
         if (read(fd, &operation, sizeof(operation)) != sizeof(operation))
             client_ragequit(1);
 
-        enum 
+        enum
         {
             OPT_NEW,
             OPT_DEL,
@@ -89,6 +99,11 @@ int main()
         }
         client_sync_global_send();
     }
+
+    if (global_data.Data[255]) // Success
+        printf("This is your flag: %s\n", global_data.Data);
+    else
+        puts("Try once more to get your flag!");
 
     client_fini();
 
