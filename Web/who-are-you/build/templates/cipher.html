@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>解密用户信息</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            max-width: 400px;
+            width: 100%;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        label, div {
+            display: block;
+            text-align: left;
+            margin-top: 10px;
+        }
+        .readonly-text {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            background-color: #f5f5f5;
+            word-wrap: break-word; /* 自动换行 */
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>The Encrypt Info</h1>
+        <form method="POST" action="/decrypt">
+            <label for="iv">IV (HEX)</label>
+            <input type="text" id="iv" name="iv" class="readonly-text" value="{{iv}}" readonly>
+            <label for="data">Cipher (HEX)</label>
+            <input type="text" id="data" name="data" class="readonly-text" value="{{cipher}}" readonly>
+            <button type="submit">解密</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>选课系统</title>
+    <style>
+        /* 添加一些基本样式 */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+        .courses-list {
+            width: 45%;
+            text-align: left;
+            max-height: 450px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+        }
+        .course {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        button {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        #selected-courses {
+            width: 45%;
+            text-align: left;
+            max-height: 450px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+        }
+        .section-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>欢迎使用选课系统</h1>
+    <div class="container">
+        <div class="courses-list" id="available-courses">
+            <h2 class="section-title">所有课程</h2>
+            <!-- 课程列表将在此处动态填充 -->
+        </div>
+
+        <div id="selected-courses">
+            <h2 class="section-title">已选课程</h2>
+            <!-- 这里列出已选的课程 -->
+        </div>
+    </div>
+
+    <div>
+        <label for="sortOrder">选择排序方式：</label>
+        <select id="sortOrder" onchange="fetchAndDisplayCourses()">
+            <option value="name">按课程名排序</option>
+            <option value="credits">按学分排序</option>
+        </select>
+    </div>
+
+    <script src="static/app.js"></script>
+</body>
+</html>
