@@ -10,6 +10,13 @@ md5 = "39dc13b299c509994b5f3f533f9b1531"
 
 S = string.ascii_letters + string.digits + '_' + '{' + '}'
 
+# letter = string.ascii_letters
+# cnt = 0
+# for c in letter:
+#     cnt += 1
+# print(cnt)
+print(2**52)
+
 
 class StringCaseIterator:
     def __init__(self, s):
@@ -67,6 +74,6 @@ for i in flags:
         flag = i[::-1]
         print(flag)
 
-if flag != FLAG:
-    print(flags)
-    print(FLAG[::-1])
+# if flag != FLAG:
+#     print(flags)
+#     print(FLAG[::-1])
