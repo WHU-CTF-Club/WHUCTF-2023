@@ -39,30 +39,14 @@ int main()
     for (int i = 0; i < 32; ++i)
         flag[i] ^= 0x1F;
 
-    for (int i = 0; i < 32; ++i)
-        printf("0x%02x, ", (unsigned char)flag[i]);
-    
-    putchar('\n');
-
     encrypt((uint32_t*)(flag + 0), (uint32_t*)key);
-    for (int i = 0; i < 32; ++i)
-        printf("0x%02x, ", (unsigned char)flag[i]);
-    
-    putchar('\n');
     encrypt((uint32_t*)(flag + 8), (uint32_t*)key);
-    for (int i = 0; i < 32; ++i)
-        printf("0x%02x, ", (unsigned char)flag[i]);
-    
-    putchar('\n');
     decrypt((uint32_t*)(flag + 16), (uint32_t*)key);
-    for (int i = 0; i < 32; ++i)
-        printf("0x%02x, ", (unsigned char)flag[i]);
-    
-    putchar('\n');
     decrypt((uint32_t*)(flag + 24), (uint32_t*)key);
 
     for (int i = 0; i < 32; ++i)
         printf("0x%02x, ", (unsigned char)flag[i]);
+    putchar('\n');
 
     return 0;
 }
