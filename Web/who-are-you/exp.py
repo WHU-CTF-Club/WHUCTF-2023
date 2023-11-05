@@ -4,25 +4,27 @@ import requests
 from Crypto.Cipher import AES
 
 url = "http://127.0.0.1:3000"
-burp_proxy = {"http" : "http://127.0.0.1:8080"}
+burp_proxy = {"http": "http://127.0.0.1:8080"}
 
 payload = {
-            'name': "admin",
-            'age': "",
-            'phone': "",
-            'email': "",
-            'birthday': "",
-            'qq': "",
-            'qqpass': "",
-            'cardid': "",
-            'cardpass': "",
-        }
+    'name': "admin",
+    'age': "",
+    'phone': "",
+    'email': "",
+    'birthday': "",
+    'qq': "",
+    'qqpass': "",
+    'cardid': "",
+    'cardpass': "",
+}
 
-def xor(b1 : bytes, b2 : bytes) -> bytes:
+
+def xor(b1: bytes, b2: bytes) -> bytes:
     result = bytearray(b1)
     for i, b in enumerate(b2):
         result[i] ^= b
     return bytes(result)
+
 
 def get_encrypt_data():
     payload['name'] = 'x' * len("admin")
@@ -32,7 +34,6 @@ def get_encrypt_data():
 
 
 def craft_iv(iv, data):
-
     bytes_iv = bytes.fromhex(iv)
     assert len(bytes_iv) == AES.block_size
 
@@ -42,11 +43,12 @@ def craft_iv(iv, data):
     new_bytes_iv2 = xor(new_bytes_iv1, json.dumps(payload)[:AES.block_size].encode())
 
     postdata = {
-        'iv' : new_bytes_iv2.hex(),
-        'data' : data
+        'iv': new_bytes_iv2.hex(),
+        'data': data
     }
-    res = requests.post(url+"/decrypt", data=postdata)
+    res = requests.post(url + "/decrypt", data=postdata)
     print(res.text)
+
 
 if __name__ == "__main__":
     # print(AES.block_size)

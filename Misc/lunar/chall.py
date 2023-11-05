@@ -88,8 +88,8 @@ class Task(socketserver.BaseRequestHandler):
     def handle(self):
         # signal.alarm(120)
         # time.sleep(60)
-        if not self.proof_of_work():
-            return
+        # if not self.proof_of_work():
+        #     return
         self.send(BANNER, newline=False)
         self.send(b"You have two choices. Tell me where she is or leave now.")
         self.send(guard_menu, newline=False)

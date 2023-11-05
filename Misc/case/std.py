@@ -74,6 +74,6 @@ for i in flags:
         flag = i[::-1]
         print(flag)
 
-# if flag != FLAG:
-#     print(flags)
-#     print(FLAG[::-1])
+if flag != FLAG:
+    print(flags)
+    print(FLAG[::-1])
