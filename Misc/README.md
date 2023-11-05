@@ -7,9 +7,6 @@
 # lunar (Recon, Social Engineering)
 
 
-# (PPC trick, like redefine)
-
-
 # (Forensic)
 
 

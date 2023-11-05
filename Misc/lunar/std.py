@@ -2,25 +2,23 @@ from re import L
 from pwn import *
 import hashlib, string, random
 
-io = remote("127.0.0.1", 63418)
-temp = io.recvline()
-print(temp)
-temp1 = temp.split(b"==")
-print(temp1)
-part_proof = bytes.decode(temp1[0].split(b"XXXX")[1])[1:-2]
-sha = bytes.decode(temp1[1]).strip()
-table = string.ascii_letters + string.digits
-while True:
-    XXXX = "".join([random.choice(table) for _ in range(4)])
-    temp_proof = XXXX + part_proof
-    temp_sha = hashlib.sha256(temp_proof.encode()).hexdigest()
-    if sha == temp_sha:
-        io.recvuntil(b"[+] Give Me XXXX :")
-        print(XXXX)
-        io.sendline(XXXX.encode())
-        break
+io = remote("127.0.0.1", 1338)
+# temp = io.recvline()
+# temp1 = temp.split(b"==")
+# part_proof = bytes.decode(temp1[0].split(b"XXXX")[1])[1:-2]
+# sha = bytes.decode(temp1[1]).strip()
+# table = string.ascii_letters + string.digits
+# while True:
+#     XXXX = "".join([random.choice(table) for _ in range(4)])
+#     temp_proof = XXXX + part_proof
+#     temp_sha = hashlib.sha256(temp_proof.encode()).hexdigest()
+#     if sha == temp_sha:
+#         io.recvuntil(b"[+] Give Me XXXX :")
+#         print(XXXX)
+#         io.sendline(XXXX.encode())
+#         break
 io.recvuntil(b"[-] ")
 io.sendline(b"1")
 io.recvuntil(b"[-] ")
-io.sendline(b"-33.8888,151.1976")
+io.sendline(b"-33.888483571971264, 151.19815476465308")
 io.interactive()

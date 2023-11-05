@@ -1,7 +1,7 @@
 from Crypto.Util.number import bytes_to_long, inverse, long_to_bytes
 from base64 import b64decode
 from sage.all import gcd
-
+# from math import gcd
 
 def b64urlDecode(data):
     to_pad = 4 - len(data) % 4
@@ -21,50 +21,50 @@ C = 3454932108453579916131399430502511588230619545318881430991349901038902611605
 
 # STEP 1
 
-# Ca = Ca.split(b'.')
-# Cb = Cb.split(b'.')
-#
-# m1 = b64urlDecode(Ca[1])
-# m2 = b64urlDecode(Cb[1])
-#
-# Ca = int(b64urlDecode(Ca[2]).decode(), 16)
-# Cb = int(b64urlDecode(Cb[2]).decode(), 16)
-#
+Ca = Ca.split(b'.')
+Cb = Cb.split(b'.')
 
-#
-# Na = Ca ** 0x10001 - bytes_to_long(m1)
-# Nb = Cb ** 0x10001 - bytes_to_long(m2)
-#
-# print("Start gcd.")
-# N = gcd(Na, Nb)
-# print(N)
+m1 = b64urlDecode(Ca[1])
+m2 = b64urlDecode(Cb[1])
 
-# Step 2
-# N = n
-# e = 0x10001
-# d = (gift * inverse(e, Mod) * inverse(N, Mod)) % Mod % N
-# print(d)
-# print(long_to_bytes(pow(pow(bytes_to_long(b'May'), d, N), e, N)))
-#
-# import random
-#
-#
-# def divide_pq(e, d, n):
-#     k = e * d - 1
-#     while True:
-#         g = random.randint(2, n - 1)
-#         t = k
-#         while True:
-#             if t % 2 != 0:
-#                 break
-#             t //= 2
-#             x = pow(g, t, n)
-#             if x > 1 and gcd(x - 1, n) > 1:
-#                 p = gcd(x - 1, n)
-#                 return p, n // p
-#
-#
-# P, Q = divide_pq(e, d, N)
+Ca = int(b64urlDecode(Ca[2]).decode(), 16)
+Cb = int(b64urlDecode(Cb[2]).decode(), 16)
+
+
+
+Na = Ca ** 0x10001 - bytes_to_long(m1)
+Nb = Cb ** 0x10001 - bytes_to_long(m2)
+
+print("Start gcd.")
+N = gcd(Na, Nb)
+print(N)
+
+Step 2
+N = n
+e = 0x10001
+d = (gift * inverse(e, Mod) * inverse(N, Mod)) % Mod % N
+print(d)
+print(long_to_bytes(pow(pow(bytes_to_long(b'May'), d, N), e, N)))
+
+import random
+
+
+def divide_pq(e, d, n):
+    k = e * d - 1
+    while True:
+        g = random.randint(2, n - 1)
+        t = k
+        while True:
+            if t % 2 != 0:
+                break
+            t //= 2
+            x = pow(g, t, n)
+            if x > 1 and gcd(x - 1, n) > 1:
+                p = gcd(x - 1, n)
+                return p, n // p
+
+
+P, Q = divide_pq(e, d, N)
 
 P, Q = p, q
 flag = (C * inverse(p, Mod)) % Mod

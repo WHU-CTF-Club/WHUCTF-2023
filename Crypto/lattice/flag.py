@@ -1,0 +1,1 @@
+flag = b'NOCTF{Merkl3_H3llman_Att4cks_1s_4_lattic3_go0d_st4rt}'
